@@ -1,0 +1,11 @@
+.DS_Store
+.git/
+.gitignore
+.next/
+.dockerignore
+Dockerfile*
+docker-compose*
+node_modules/
+
+yarn.lock
+yarn-error.log

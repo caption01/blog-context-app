@@ -1,14 +1,14 @@
-import { AppContext, AppInitialProps } from 'next/app'
+import { AppContext, AppInitialProps } from "next/app";
 
-import AppLayout from 'components/layout/layout'
-import '../styles/globals.css'
+import { Layout } from "components/templates";
+import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppContext & AppInitialProps) => {
   return (
-    <AppLayout>
-        <Component {...pageProps} />
-    </AppLayout>
-  )
-}
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+};
 
-export default MyApp
+export default MyApp;

@@ -1,26 +1,13 @@
 import { FunctionComponent } from "react";
 
+import { Main } from "components/templates";
+
 const IndexPage: FunctionComponent = () => {
   return (
-    <>
-      <main id="index" style={{ height: "70vh", backgroundColor: "#EBF2F4" }}>
-        index secton
-      </main>
-
-      <section
-        id="article"
-        style={{ height: "70vh", backgroundColor: "#EBF2F4" }}
-      >
-        article secton
-      </section>
-
-      <section
-        id="footer"
-        style={{ height: "70vh", backgroundColor: "#EBF2F4" }}
-      >
-        footer secton
-      </section>
-    </>
+    <Main>
+      <div>hello</div>
+      <div>hello</div>
+    </Main>
   );
 };
 

@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactChild } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import styled from "styled-components";
 
 const AppBody = styled.div`
@@ -8,7 +8,7 @@ const AppBody = styled.div`
 `;
 
 type Props = {
-  children: ReactChild;
+  children: ReactNode;
 };
 
 const Layout: FunctionComponent<Props> = ({ children }) => {

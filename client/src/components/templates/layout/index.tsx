@@ -2,7 +2,7 @@ import { FunctionComponent, ReactChild } from "react";
 import styled from "styled-components";
 
 const AppBody = styled.div`
-  width: 70vw;
+  width: 80vw;
   min-height: 100vh;
   margin: 0 auto;
 `;

@@ -2,19 +2,12 @@ version: '3'
 services:
   client:
     stdin_open: true
+    ports:
+      - 3000:3000
     build:
       context: ./client
       dockerfile: Dockerfile.dev
     volumes:
       - /usr/src/app/node_modules
       - /usr/src/app/.next
-      - .:/usr/src/app
-  # nginx:
-  #   build:
-  #     context: ./nginx
-  #     dockerfile: Dockerfile.dev
-  #   ports:
-  #     - '80:80'
-  #     - '443:443'
-  #   depends_on:
-  #     - client
+      - ./client:/usr/src/app

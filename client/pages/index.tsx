@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-const MainPage: FunctionComponent = () => {
+const IndexPage: FunctionComponent = () => {
   return (
     <>
       <main id="index" style={{ height: "70vh", backgroundColor: "#EBF2F4" }}>
@@ -24,4 +24,4 @@ const MainPage: FunctionComponent = () => {
   );
 };
 
-export default MainPage;
+export default IndexPage;

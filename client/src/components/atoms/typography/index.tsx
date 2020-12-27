@@ -1,22 +1,30 @@
 import React, { FunctionComponent, ReactChild } from "react";
 import { Typography } from "antd";
 
-const { Title: Tit } = Typography;
+const { Title: Tit, Text: Txt } = Typography;
 
-type TitleProps = {
-  chidren: ReactChild;
+type H1Props = {
+  children: ReactChild;
 };
 
-type SubtitleProps = {
-  chidren: ReactChild;
-};
-
-const Title: FunctionComponent<TitleProps> = ({ children }) => {
+const H1: FunctionComponent<H1Props> = ({ children }) => {
   return <Tit>{children}</Tit>;
 };
 
-const SubTitle: FunctionComponent<SubtitleProps> = ({ children }) => {
+type H3Props = {
+  children: ReactChild;
+};
+
+const H3: FunctionComponent<H3Props> = ({ children }) => {
   return <Tit level={3}>{children}</Tit>;
 };
 
-export { Title, SubTitle };
+type TextProps = {
+  children: ReactChild;
+};
+
+const Text: FunctionComponent<TextProps> = ({ children }) => {
+  return <Txt>{children}</Txt>;
+};
+
+export { H1, H3, Text };

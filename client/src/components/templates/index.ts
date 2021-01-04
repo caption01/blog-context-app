@@ -1,3 +1,3 @@
-import Layout from "./layout";
+import Main from "@components/templates/Main";
 
-export { Layout };
+export { Main };

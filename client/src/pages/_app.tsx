@@ -1,14 +1,9 @@
 import { AppContext, AppInitialProps } from "next/app";
 
-import { Layout } from "components/templates";
-import "../styles/globals.css";
+import "../../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppContext & AppInitialProps) => {
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  );
+  return <Component {...pageProps} />;
 };
 
 export default MyApp;

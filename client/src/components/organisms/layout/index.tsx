@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactChild } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 
 const AppBody = styled.div`
@@ -7,11 +7,7 @@ const AppBody = styled.div`
   margin: 0 auto;
 `;
 
-type Props = {
-  children: ReactChild;
-};
-
-const Layout: FunctionComponent<Props> = ({ children }) => {
+const Layout: FunctionComponent = ({ children }) => {
   return <AppBody>{children}</AppBody>;
 };
 

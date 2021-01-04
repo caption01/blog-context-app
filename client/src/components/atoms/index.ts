@@ -1,3 +1,4 @@
-import * as Typography from "./typography";
+import * as Typography from "@components/atoms/typography";
+import IconComponent from "@components/atoms/Icon";
 
-export { Typography };
+export { Typography, IconComponent };

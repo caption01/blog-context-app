@@ -1,3 +1,3 @@
-import Layout from "components/organisms/layout";
+import Layout from "@components/organisms/layout";
 
 export { Layout };

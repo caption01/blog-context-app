@@ -3,27 +3,15 @@ import { Typography } from "antd";
 
 const { Title: Tit, Text: Txt } = Typography;
 
-type H1Props = {
-  children: ReactChild;
-};
-
-const H1: FunctionComponent<H1Props> = ({ children }) => {
+const H1: FunctionComponent = ({ children }) => {
   return <Tit>{children}</Tit>;
 };
 
-type H3Props = {
-  children: ReactChild;
-};
-
-const H3: FunctionComponent<H3Props> = ({ children }) => {
+const H3: FunctionComponent = ({ children }) => {
   return <Tit level={3}>{children}</Tit>;
 };
 
-type TextProps = {
-  children: ReactChild;
-};
-
-const Text: FunctionComponent<TextProps> = ({ children }) => {
+const Text: FunctionComponent = ({ children }) => {
   return <Txt>{children}</Txt>;
 };
 

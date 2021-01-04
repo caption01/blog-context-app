@@ -7,11 +7,7 @@ const AppBody = styled.div`
   margin: 0 auto;
 `;
 
-type Props = {
-  children: ReactNode;
-};
-
-const Layout: FunctionComponent<Props> = ({ children }) => {
+const Layout: FunctionComponent = ({ children }) => {
   return <AppBody>{children}</AppBody>;
 };
 

@@ -1,12 +1,8 @@
 import { FunctionComponent, ReactNode } from "react";
 
-import { Layout } from "components/organisms";
+import { Layout } from "@components/organisms";
 
-type MainProps = {
-  children: ReactNode;
-};
-
-const Main: FunctionComponent<MainProps> = ({ children }) => {
+const Main: FunctionComponent = ({ children }) => {
   return <Layout>{children}</Layout>;
 };
 

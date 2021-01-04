@@ -1,3 +1,3 @@
-import Main from "components/templates/Main";
+import Main from "@components/templates/Main";
 
 export { Main };

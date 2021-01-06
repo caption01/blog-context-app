@@ -5,25 +5,39 @@ import cors from "cors";
 
 import { sequelize } from "./db";
 
+import { errorHandler } from "./middlewares/errorHandler";
+
+import { userRouter } from "./routes/user";
+import { signInRouter } from "./routes/signin";
+import { signUpRouter } from "./routes/signup";
+// import { signOutRouter } from "./routes/signout";
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(errorHandler);
 
 const runApp = async (PORT: number | string) => {
-  const db = await sequelize.sync({ force: true });
+  try {
+    await sequelize.sync({ force: true });
+    console.log("connected to DB");
+  } catch (err) {
+    console.log("cant connect to DB", err);
+  }
 
-  const { Users } = db.models;
+  app.use("/api/signin", signInRouter);
+  app.use("/api/signup", signUpRouter);
+  // app.use("/api/signout", signOutRouter);
+  app.use("/api/currentUser", userRouter);
+  // app.use("/api/articles", "");
+  // app.use("/api/clips", "");
 
   app.get("/", (_req, res) => {
-    res.send("hello");
+    res.send("hello server");
   });
 
-  app.get("/user", async (_req, res) => {
-    const users = await Users.findAll();
-    console.log("query user", users);
-    return res.send(users);
-  });
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`server run on port ${PORT} !!`);

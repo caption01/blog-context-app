@@ -1,16 +1,13 @@
 import { Sequelize } from "sequelize-typescript";
 
+import { configs } from "./config/database";
 import Users from "./models/user";
 
-const sequelize = new Sequelize({
-  dialect: "postgres",
-  host: "localhost",
-  port: 5432,
-  database: "nh-codecontext",
-  username: "postgres",
-  password: "admin",
-  // models: [__dirname + "/models"],
-});
+const dev = process.env.NODE_ENV !== "production";
+
+const dbConfig = dev ? configs.development : configs.production;
+
+const sequelize = new Sequelize({ ...dbConfig });
 
 sequelize.addModels([Users]);
 

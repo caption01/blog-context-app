@@ -5,6 +5,8 @@ import cors from "cors";
 
 import { sequelize } from "./db";
 
+import { userRouter } from "./routes/user";
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -13,16 +15,10 @@ app.use(cors());
 const runApp = async (PORT: number | string) => {
   const db = await sequelize.sync({ force: true });
 
-  const { Users } = db.models;
+  app.use("/api/users", userRouter(db));
 
   app.get("/", (_req, res) => {
-    res.send("hello");
-  });
-
-  app.get("/user", async (_req, res) => {
-    const users = await Users.findAll();
-    console.log("query user", users);
-    return res.send(users);
+    res.send("hello server");
   });
 
   app.listen(PORT, () => {

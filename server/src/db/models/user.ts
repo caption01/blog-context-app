@@ -1,4 +1,3 @@
-// import { Model, DataTypes, Sequelize } from "sequelize";
 import {
   Table,
   Column,
@@ -6,6 +5,7 @@ import {
   AutoIncrement,
   PrimaryKey,
   CreatedAt,
+  ModelCtor,
 } from "sequelize-typescript";
 
 export interface UsersAttr {
@@ -14,6 +14,8 @@ export interface UsersAttr {
   password: string;
   email: string;
 }
+
+export interface UserInstance extends ModelCtor<Users> {}
 @Table
 class Users extends Model<UsersAttr> {
   @AutoIncrement

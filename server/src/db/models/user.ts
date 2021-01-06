@@ -5,7 +5,7 @@ import {
   AutoIncrement,
   PrimaryKey,
   CreatedAt,
-  ModelCtor,
+  UpdatedAt,
 } from "sequelize-typescript";
 
 export interface UsersAttr {
@@ -13,6 +13,7 @@ export interface UsersAttr {
   username: string;
   password: string;
   email: string;
+  role: string;
 }
 
 // export interface UserInstance extends ModelCtor<Users> {}
@@ -32,13 +33,16 @@ class Users extends Model<UsersAttr> {
   @Column
   email: string;
 
+  @Column
+  role: string;
+
   @CreatedAt
   @Column
   createdAt: Date;
 
-  @CreatedAt
+  @UpdatedAt
   @Column
-  updated: Date;
+  updatedAt: Date;
 }
 
 export default Users;

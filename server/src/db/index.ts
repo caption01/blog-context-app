@@ -1,6 +1,6 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 
-import { users } from "./models/user";
+import Users from "./models/user";
 
 const sequelize = new Sequelize({
   dialect: "postgres",
@@ -9,23 +9,9 @@ const sequelize = new Sequelize({
   database: "nh-codecontext",
   username: "postgres",
   password: "admin",
+  // models: [__dirname + "/models"],
 });
 
-const connectDb = async () => {
-  try {
-    await sequelize.authenticate();
-    const Users = users(sequelize);
+sequelize.addModels([Users]);
 
-    console.log("Connection has been established successfully.");
-
-    return {
-      models: {
-        Users,
-      },
-    };
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-};
-
-export { connectDb };
+export { sequelize };

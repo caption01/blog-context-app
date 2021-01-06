@@ -3,23 +3,31 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 
-import { connectDb } from "./db";
+import { sequelize } from "./db";
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (_req, res) => {
-  res.send("hello");
-});
+const runApp = async (PORT: number | string) => {
+  const db = await sequelize.sync({ force: true });
 
-app.get("/user", async (_req, res) => {
-  const db = await connectDb();
+  const { Users } = db.models;
 
-  const Users = await db.models.Users;
-  const users = await Users.findAll();
-  return res.send(users);
-});
+  app.get("/", (_req, res) => {
+    res.send("hello");
+  });
 
-export { app };
+  app.get("/user", async (_req, res) => {
+    const users = await Users.findAll();
+    console.log("query user", users);
+    return res.send(users);
+  });
+
+  app.listen(PORT, () => {
+    console.log(`server run on port ${PORT} !!`);
+  });
+};
+
+export { runApp };

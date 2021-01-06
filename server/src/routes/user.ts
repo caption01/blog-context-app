@@ -1,9 +1,10 @@
 import { Router } from "express";
 
 import { getUsers } from "../controller/user";
+import { checkAuth } from "../middlewares/checkAuth";
 
 const router = Router();
 
-router.get("/", (req, res) => getUsers(req, res));
+router.get("/", checkAuth, getUsers);
 
 export { router as userRouter };

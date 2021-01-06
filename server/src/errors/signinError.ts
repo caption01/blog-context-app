@@ -1,19 +1,24 @@
 import { CustomError } from "./customError";
 
+type SignInErrorField = {
+  msg: string;
+  field: string;
+};
+
 export class SignInError extends CustomError {
   statusCode = 201;
+  errors: SignInErrorField[] = [];
 
-  constructor() {
-    super("Email has been used");
+  constructor(errors: SignInErrorField[]) {
+    super("Signin error");
+    this.errors = errors;
     Object.setPrototypeOf(this, SignInError.prototype);
   }
 
   serializeErrors() {
-    return [
-      {
-        message: "Email has been use",
-        field: "email",
-      },
-    ];
+    return this.errors.map((err) => ({
+      message: err.msg,
+      field: err.field,
+    }));
   }
 }

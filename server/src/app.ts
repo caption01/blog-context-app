@@ -9,12 +9,14 @@ import { errorHandler } from "./middlewares/errorHandler";
 
 import { userRouter } from "./routes/user";
 import { signInRouter } from "./routes/signin";
-import { signOutRouter } from "./routes/signout";
+import { signUpRouter } from "./routes/signup";
+// import { signOutRouter } from "./routes/signout";
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(errorHandler);
 
 const runApp = async (PORT: number | string) => {
   try {
@@ -25,7 +27,8 @@ const runApp = async (PORT: number | string) => {
   }
 
   app.use("/api/signin", signInRouter);
-  app.use("/api/signout", signOutRouter);
+  app.use("/api/signup", signUpRouter);
+  // app.use("/api/signout", signOutRouter);
   app.use("/api/currentUser", userRouter);
   // app.use("/api/articles", "");
   // app.use("/api/clips", "");

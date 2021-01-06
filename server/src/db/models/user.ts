@@ -1,21 +1,42 @@
-import { Model, DataTypes } from "sequelize";
+// import { Model, DataTypes, Sequelize } from "sequelize";
+import {
+  Table,
+  Column,
+  Model,
+  AutoIncrement,
+  PrimaryKey,
+  CreatedAt,
+} from "sequelize-typescript";
 
-const users = (sequelize) => {
-  class User extends Model {}
+export interface UsersAttr {
+  id: number;
+  username: string;
+  password: string;
+  email: string;
+}
+@Table
+class Users extends Model<UsersAttr> {
+  @AutoIncrement
+  @PrimaryKey
+  @Column
+  id: number;
 
-  User.init(
-    {
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
-    },
-    {
-      sequelize,
-      modelName: "User",
-    }
-  );
+  @Column
+  username: string;
 
-  return User;
-};
+  @Column
+  password: string;
 
-export { users };
+  @Column
+  email: string;
+
+  @CreatedAt
+  @Column
+  createdAt: Date;
+
+  @CreatedAt
+  @Column
+  updated: Date;
+}
+
+export default Users;

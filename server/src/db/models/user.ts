@@ -15,7 +15,7 @@ export interface UsersAttr {
   email: string;
 }
 
-export interface UserInstance extends ModelCtor<Users> {}
+// export interface UserInstance extends ModelCtor<Users> {}
 @Table
 class Users extends Model<UsersAttr> {
   @AutoIncrement

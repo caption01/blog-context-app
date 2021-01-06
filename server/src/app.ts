@@ -13,9 +13,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const runApp = async (PORT: number | string) => {
-  const db = await sequelize.sync({ force: true });
+  // const db = await sequelize.sync({ force: true });
+  await sequelize.sync({ force: true });
 
-  app.use("/api/users", userRouter(db));
+  app.use("/api/users", userRouter);
 
   app.get("/", (_req, res) => {
     res.send("hello server");

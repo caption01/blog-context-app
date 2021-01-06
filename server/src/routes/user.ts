@@ -1,18 +1,9 @@
 import { Router } from "express";
 
-import { UserInstance } from "./../db/models/user";
+import { getUsers } from "../controller/user";
 
-let router = Router();
+const router = Router();
 
-const userRouter = (db) => {
-  router.get("/", async (req, res) => {
-    const UserInstance: UserInstance = db.models.Users;
-    const allUser = await UserInstance.findAll();
+router.get("/", (req, res) => getUsers(req, res));
 
-    return res.status(200).send(allUser);
-  });
-
-  return router;
-};
-
-export { userRouter };
+export { router as userRouter };

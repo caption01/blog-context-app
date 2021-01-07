@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 
-import { getToken, checkValidToken } from "../helpers/jwtToken";
+import {
+  getToken,
+  checkValidToken,
+  getUserFromToken,
+} from "../helpers/jwtToken";
 import { TokenError } from "../errors/tokenError";
 
 export const requireToken = async (
@@ -19,5 +23,8 @@ export const requireToken = async (
     throw new TokenError("token not valid");
   }
 
+  const userData = await getUserFromToken(token);
+  console.log("user from token", userData);
+  req.session?.currentUser = userData;
   next();
 };

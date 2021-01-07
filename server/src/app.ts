@@ -2,6 +2,7 @@ import "express-async-errors";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import session from "express-session";
 
 import { sequelize } from "./db";
 
@@ -17,7 +18,11 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(errorHandler);
+app.use(
+  session({
+    secret: "asdasd",
+  })
+);
 
 const runApp = async (PORT: number | string) => {
   try {

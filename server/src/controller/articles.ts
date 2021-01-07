@@ -55,3 +55,18 @@ export const updateArticle = async (req, res) => {
     },
   });
 };
+
+export const deleteArticle = async (req, res) => {
+  const { id } = req.params;
+  const existingArticle = await Articles.findOne({ where: { id } });
+
+  if (!existingArticle) throw new RequestError("Article not found");
+
+  await Articles.destroy({ where: { id } });
+
+  return res.status(200).send({
+    data: {
+      success: true,
+    },
+  });
+};

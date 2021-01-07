@@ -12,7 +12,6 @@ import { userRouter } from "./routes/user";
 import { signInRouter } from "./routes/signin";
 import { signUpRouter } from "./routes/signup";
 import { articleRouter } from "./routes/articles";
-// import { signOutRouter } from "./routes/signout";
 
 const app = express();
 
@@ -34,7 +33,6 @@ const runApp = async (PORT: number | string) => {
 
   app.use("/api/signin", signInRouter);
   app.use("/api/signup", signUpRouter);
-  // app.use("/api/signout", signOutRouter);
   app.use("/api/currentUser", userRouter);
   app.use("/api/article", articleRouter);
   // app.use("/api/clips", "");

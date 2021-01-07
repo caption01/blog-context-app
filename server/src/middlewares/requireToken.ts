@@ -24,7 +24,6 @@ export const requireToken = async (
   }
 
   const userData = await getUserFromToken(token);
-  console.log("user from token", userData);
   req.session?.currentUser = userData;
   next();
 };

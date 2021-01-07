@@ -1,7 +1,7 @@
 import { CustomError } from "./customError";
 
 export class SignUpError extends CustomError {
-  statusCode = 201;
+  statusCode = 501;
 
   constructor() {
     super("Email has been used");

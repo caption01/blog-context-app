@@ -1,20 +1,19 @@
 import { CustomError } from "./customError";
 
-// example error
-export class QueryError extends CustomError {
-  statusCode = 409;
+export class TokenError extends CustomError {
+  statusCode = 401;
 
   constructor(message: string) {
     super(message);
-
-    Object.setPrototypeOf(this, QueryError.prototype);
+    this.message = message;
+    Object.setPrototypeOf(this, TokenError.prototype);
   }
 
   serializeErrors() {
     return [
       {
         message: this.message,
-        field: "req.query",
+        field: "token",
       },
     ];
   }

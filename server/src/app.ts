@@ -2,6 +2,7 @@ import "express-async-errors";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import session from "express-session";
 
 import { sequelize } from "./db";
 
@@ -10,13 +11,17 @@ import { errorHandler } from "./middlewares/errorHandler";
 import { userRouter } from "./routes/user";
 import { signInRouter } from "./routes/signin";
 import { signUpRouter } from "./routes/signup";
-// import { signOutRouter } from "./routes/signout";
+import { articleRouter } from "./routes/articles";
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(errorHandler);
+app.use(
+  session({
+    secret: "asdasd",
+  })
+);
 
 const runApp = async (PORT: number | string) => {
   try {
@@ -28,9 +33,8 @@ const runApp = async (PORT: number | string) => {
 
   app.use("/api/signin", signInRouter);
   app.use("/api/signup", signUpRouter);
-  // app.use("/api/signout", signOutRouter);
   app.use("/api/currentUser", userRouter);
-  // app.use("/api/articles", "");
+  app.use("/api/article", articleRouter);
   // app.use("/api/clips", "");
 
   app.get("/", (_req, res) => {

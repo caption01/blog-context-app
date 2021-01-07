@@ -3,6 +3,15 @@ import jwt from "jsonwebtoken";
 import User from "../db/models/user";
 
 const secreate = "asdasdq2e13";
+const tokenExpire = 60 * 60 * 24;
+
+export const generateToken = (payload) => {
+  const token = jwt.sign({ payload }, secreate, {
+    expiresIn: tokenExpire,
+  });
+
+  return token;
+};
 
 export const getToken = (req) => {
   const bearerToken = req.headers.authorization;

@@ -6,7 +6,7 @@ type SignInErrorField = {
 };
 
 export class SignInError extends CustomError {
-  statusCode = 201;
+  statusCode = 501;
   errors: SignInErrorField[] = [];
 
   constructor(errors: SignInErrorField[]) {

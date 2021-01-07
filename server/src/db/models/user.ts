@@ -6,7 +6,10 @@ import {
   PrimaryKey,
   CreatedAt,
   UpdatedAt,
+  HasMany,
 } from "sequelize-typescript";
+
+import Articles from "./articles";
 
 export interface UsersAttr {
   id: number;
@@ -16,7 +19,6 @@ export interface UsersAttr {
   role: string;
 }
 
-// export interface UserInstance extends ModelCtor<Users> {}
 @Table
 class Users extends Model<UsersAttr> {
   @AutoIncrement
@@ -43,6 +45,9 @@ class Users extends Model<UsersAttr> {
   @UpdatedAt
   @Column
   updatedAt: Date;
+
+  @HasMany(() => Articles)
+  articles: Articles[];
 }
 
 export default Users;

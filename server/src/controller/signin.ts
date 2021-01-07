@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
-import cookie from "cookie";
 
 import User from "../db/models/user";
 import { SignInError } from "../errors/signinError";
-
-const secreate = "asdasdq2e13";
+import { generateToken } from "../helpers/jwtToken";
 
 export const signIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -25,10 +22,8 @@ export const signIn = async (req: Request, res: Response) => {
   if (userPassword !== password) {
     throw new SignInError([{ msg: "password not correct", field: "password" }]);
   }
-
-  const token = jwt.sign({ payload: email }, secreate, {
-    expiresIn: 60,
-  });
+  const payload = email;
+  const token = generateToken(payload);
 
   return res.status(200).send({ data: { token } });
 };

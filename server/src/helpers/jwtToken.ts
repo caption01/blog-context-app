@@ -4,6 +4,14 @@ import User from "../db/models/user";
 
 const secreate = "asdasdq2e13";
 
+export const generateToken = (payload) => {
+  const token = jwt.sign({ payload }, secreate, {
+    expiresIn: 60,
+  });
+
+  return token;
+};
+
 export const getToken = (req) => {
   const bearerToken = req.headers.authorization;
   if (!bearerToken) return null;

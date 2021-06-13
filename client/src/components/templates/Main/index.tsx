@@ -6,4 +6,6 @@ const Main: FunctionComponent = ({ children }) => {
   return <Layout>{children}</Layout>;
 };
 
-export default Main;
+
+
+export default    Main;
